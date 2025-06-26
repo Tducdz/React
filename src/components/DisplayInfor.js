@@ -1,5 +1,4 @@
 import React from "react";
-import { use } from "react";
 
 class DisplayInfor extends React.Component {
   state = {
