@@ -3,14 +3,13 @@ import UserInfor from "./UseInfor";
 import DisplayInfor from "./DisplayInfor";
 
 class MyComponent extends React.Component {
-
-  state =  {
+  state = {
     listUsers: [
-      {id: 1, name:"Trung Duc", age:"21"},
-      {id: 2, name:"Duc", age:"22"},
-      {id: 3, name:"Oanh", age:"21"},
-    ]
-  }
+      { id: 1, name: "Trung Duc", age: "16" },
+      { id: 2, name: "Duc", age: "22" },
+      { id: 3, name: "Oanh", age: "21" },
+    ],
+  };
 
   // JSX
   render() {
