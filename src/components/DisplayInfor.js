@@ -2,9 +2,29 @@ import React from "react";
 import "./DisplayInfor.scss";
 
 class DisplayInfor extends React.Component {
-  state = {
-    isShowListUsers: true,
-  };
+  constructor(props) {
+    console.log("call constructor");
+    super(props);
+    this.state = {
+      isShowListUsers: true,
+    };
+  }
+
+  componentDidMount() {
+    console.log("call me Did mount");
+    setTimeout(() => {
+      document.title = "Trung Duc";
+    }, 3000);
+  }
+
+  componentDidUpdate(prevProps, prevState, snapShot) {
+    console.log("call me component did update", this.props, prevProps);
+    if (this.props.listUsers !== prevProps.listUsers) {
+      if (this.props.listUsers.length === 5) {
+        console.log("you got 5 users");
+      }
+    }
+  }
 
   handleShowHide = () => {
     this.setState({
@@ -13,6 +33,7 @@ class DisplayInfor extends React.Component {
   };
 
   render() {
+    console.log("call me render");
     const { listUsers } = this.props;
     return (
       <div className="display-infor-container">
