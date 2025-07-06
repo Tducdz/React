@@ -1,0 +1,20 @@
+.admin-container {
+  display: flex;
+  .admin-sidebar {
+    .pro-sidebar {
+      height: 100vh;
+      .pro-sidebar-header-text {
+        transition: all 0.3s ease-in-out !important;
+      }
+    }
+
+    .pro-sidebar.collapsed {
+      .pro-sidebar-header {
+        .pro-sidebar-header-text {
+          padding: 18px !important;
+          transition: all 0.3s ease-in-out !important;
+        }
+      }
+    }
+  }
+}

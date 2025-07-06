@@ -10,7 +10,36 @@ body {
 
 .app-container {
   .header-container {
-    .navbar-nav {
+    .btn-login {
+      height: 40px;
+      border-radius: 4px;
+      margin-right: 16px;
+      padding: 0 16px;
+      border: 1px solid #535353;
+
+      &:hover {
+        background-color: #ccc;
+      }
+    }
+
+    .btn-signup {
+      height: 40px;
+      border-radius: 4px;
+      padding: 0 16px;
+      border: 1px solid #535353;
+      background-color: black;
+      color: white;
+
+      &:hover {
+        background-color: #666;
+      }
+    }
+
+    .navbar {
+      z-index: 10;
+      background-color: transparent;
+      padding-top: 20px;
+
       .nav-link {
         &.active {
           color: #00bfff;
@@ -18,4 +47,44 @@ body {
       }
     }
   }
+  .homepage-container {
+    .homepage-content {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      position: relative;
+      padding: 100px;
+      width: 50%;
+
+      .main-title {
+        font-size: 36px;
+        font-weight: 600;
+      }
+
+      .title-2 {
+        font-size: 20px;
+      }
+
+      .title-3 {
+        button {
+          height: 40px;
+          border-radius: 4px;
+          padding: 0 16px;
+          border: 1px solid #535353;
+          background-color: black;
+          color: white;
+
+          &:hover {
+            background-color: #666;
+          }
+        }
+      }
+    }
+  }
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
 }
