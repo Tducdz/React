@@ -71,7 +71,7 @@ const ModalEditUser = (props) => {
         onHide={handleClose}
         size="xl"
         backdrop="static"
-        className="modal-add-user"
+        className="modal-user"
       >
         <Modal.Header closeButton>
           <Modal.Title>Edit a user</Modal.Title>
