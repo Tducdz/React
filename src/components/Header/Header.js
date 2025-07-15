@@ -7,8 +7,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 const Header = () => {
   const navigate = useNavigate();
 
-  const handeLogin = () => {
+  const handleLogin = () => {
     navigate("/login");
+  };
+
+  const handleRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -31,10 +35,12 @@ const Header = () => {
             </NavLink>
           </Nav>
           <Nav>
-            <button className="btn-login" onClick={() => handeLogin()}>
+            <button className="btn-login" onClick={() => handleLogin()}>
               Login
             </button>
-            <button className="btn-signup">Sign up</button>
+            <button className="btn-signup" onClick={() => handleRegister()}>
+              Sign up
+            </button>
             {/* <NavDropdown title="Settings" id="basic-nav-dropdown">
               <NavDropdown.Item>Login</NavDropdown.Item>
               <NavDropdown.Item>Logout</NavDropdown.Item>

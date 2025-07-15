@@ -1,14 +1,16 @@
 import { useState } from "react";
-import "./Login.scss";
+import "./Register.scss";
 import { useNavigate } from "react-router-dom";
-import { postLogin } from "../../services/apiService";
+import { postRegister } from "../../services/apiService";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-const Login = (props) => {
+const Register = (props) => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
   const navigate = useNavigate();
 
   const validateEmail = (email) => {
@@ -19,7 +21,7 @@ const Login = (props) => {
       );
   };
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     const isValidEmail = validateEmail(email);
 
     if (!isValidEmail) {
@@ -32,10 +34,10 @@ const Login = (props) => {
       return;
     }
 
-    let res = await postLogin(email, password);
+    let res = await postRegister(email, username, password);
     if (res && res.EC === 0) {
       toast.success(res.EM);
-      navigate("/");
+      navigate("/login");
     }
 
     if (res && res.EC !== 0) {
@@ -46,14 +48,22 @@ const Login = (props) => {
   return (
     <div className="login-container">
       <div className="header">
-        <span>Don't have account yet?</span>
-        <button onClick={() => navigate("/register")}>Sign up</button>
+        <span>Already have an account?</span>
+        <button onClick={() => navigate("/login")}>Sign in</button>
       </div>
       <div className="title col-4 mx-auto">TDucQuiz</div>
       <div className="welcome col-4 mx-auto">Hello, who's this?</div>
       <div className="content-form col-4 mx-auto">
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            id="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+          <label htmlFor="email">Email (*)</label>
           <input
             type="email"
             id="email"
@@ -62,7 +72,7 @@ const Login = (props) => {
             onChange={(event) => setEmail(event.target.value)}
           />
           <div className="form-password">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password (*)</label>
             <input
               type={showPassword ? "text" : "password"}
               className="form-control"
@@ -78,10 +88,9 @@ const Login = (props) => {
             </span>
           </div>
         </div>
-        <span className="forgot-password">Forgot password?</span>
         <div>
-          <button className="btn-submit" onClick={() => handleLogin()}>
-            Login
+          <button className="btn-submit" onClick={() => handleRegister()}>
+            Sign up
           </button>
           <div className="btn-home">
             <span onClick={() => navigate("/")}>
@@ -95,4 +104,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Register;
