@@ -1,8 +1,23 @@
 .login-container {
   .header {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 20px;
     height: 44px;
-    text-align: right;
-    border: 1px solid red;
+    padding: 0 60px;
+
+    button {
+      border: none;
+      background-color: #ccc;
+      padding: 4px 12px;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #000;
+        color: #fff;
+      }
+    }
   }
 
   .title {
@@ -50,6 +65,11 @@
         background-color: #ccc;
         color: #000;
       }
+    }
+
+    .btn-home {
+      cursor: pointer;
+      margin-top: 8px;
     }
   }
 }
