@@ -1,8 +1,14 @@
+html,
+body {
+  overflow: hidden;
+}
+
 .admin-container {
   display: flex;
+  height: 100vh;
   .admin-sidebar {
     .pro-sidebar {
-      height: 100vh;
+      height: 100%;
       .pro-sidebar-header-text {
         transition: all 0.3s ease-in-out !important;
       }

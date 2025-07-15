@@ -1,0 +1,55 @@
+.login-container {
+  .header {
+    height: 44px;
+    text-align: right;
+    border: 1px solid red;
+  }
+
+  .title {
+    font-size: 24px;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .welcome {
+    font-size: 20px;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .content-form {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+
+    .forgot-password {
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 14px;
+      font-weight: 500;
+
+      &:hover {
+        color: #f00;
+      }
+    }
+
+    .btn-submit {
+      margin-top: 12px;
+      width: 100%;
+      padding: 8px 0;
+      border: none;
+      background-color: #000;
+      color: #fff;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: #ccc;
+        color: #000;
+      }
+    }
+  }
+}
