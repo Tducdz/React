@@ -5,11 +5,15 @@ import { postLogin } from "../../services/apiService";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { doLogin } from "../../redux/action/userAction";
+import { ImSpinner } from "react-icons/im";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,12 +38,11 @@ const Login = (props) => {
       return;
     }
 
+    setIsSpinning(true);
+
     let res = await postLogin(email, password);
     if (res && res.EC === 0) {
-      dispatch({
-        type: "FETCH_USER_LOGIN_SUCCESS",
-        payload: res,
-      });
+      dispatch(doLogin(res));
       toast.success(res.EM);
       navigate("/");
     }
@@ -47,6 +50,8 @@ const Login = (props) => {
     if (res && res.EC !== 0) {
       toast.error(res.EM);
     }
+
+    setIsSpinning(false);
   };
 
   return (
@@ -87,7 +92,7 @@ const Login = (props) => {
         <span className="forgot-password">Forgot password?</span>
         <div>
           <button className="btn-submit" onClick={() => handleLogin()}>
-            Login
+            {isSpinning ? <ImSpinner className="spin" /> : <span>Login</span>}
           </button>
           <div className="btn-home">
             <span onClick={() => navigate("/")}>

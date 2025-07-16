@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { postRegister } from "../../services/apiService";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ImSpinner } from "react-icons/im";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isSpinning, setIsSpinning] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,6 +35,7 @@ const Register = (props) => {
       toast.error("Invalid Password");
       return;
     }
+    setIsSpinning(true);
 
     let res = await postRegister(email, username, password);
     if (res && res.EC === 0) {
@@ -43,6 +46,7 @@ const Register = (props) => {
     if (res && res.EC !== 0) {
       toast.error(res.EM);
     }
+    setIsSpinning(false);
   };
 
   return (
@@ -90,7 +94,7 @@ const Register = (props) => {
         </div>
         <div>
           <button className="btn-submit" onClick={() => handleRegister()}>
-            Sign up
+            {isSpinning ? <ImSpinner className="spin" /> : <span>Sign up</span>}
           </button>
           <div className="btn-home">
             <span onClick={() => navigate("/")}>
