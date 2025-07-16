@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { postLogin } from "../../services/apiService";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const validateEmail = (email) => {
     return String(email)
@@ -34,6 +36,10 @@ const Login = (props) => {
 
     let res = await postLogin(email, password);
     if (res && res.EC === 0) {
+      dispatch({
+        type: "FETCH_USER_LOGIN_SUCCESS",
+        payload: res,
+      });
       toast.success(res.EM);
       navigate("/");
     }
