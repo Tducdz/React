@@ -32,8 +32,11 @@ const ListQuiz = (props) => {
             >
               <img
                 className="card-img-top"
-                // src={quiz.image ? `data:image/jpeg;base64,${quiz.image}`: "/default.jpg"}
-                src={`data:image/jpeg;base64,${quiz.image}`}
+                src={
+                  quiz.image
+                    ? `data:image/jpeg;base64,${quiz.image}`
+                    : "/default.jpg"
+                }
                 alt="Card"
               />
               <div className="card-body">
@@ -41,7 +44,11 @@ const ListQuiz = (props) => {
                 <p className="card-text">{quiz.description}</p>
                 <button
                   className="btn btn-primary"
-                  onClick={() => navigate(`/quiz/${quiz.id}`)}
+                  onClick={() =>
+                    navigate(`/quiz/${quiz.id}`, {
+                      state: { quizDescription: quiz.description },
+                    })
+                  }
                 >
                   Start Now
                 </button>
