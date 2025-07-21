@@ -6,6 +6,7 @@
   .left-content {
     border: 1px solid #000;
     width: 70%;
+    padding: 20px;
 
     .title {
       font-size: 24px;
@@ -16,6 +17,25 @@
       .question {
         font-size: 20px;
         font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .q-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        height: 224px;
+        img {
+          max-width: 300px;
+          max-height: 224px;
+        }
+      }
+
+      .answer {
+        .option {
+          padding-left: 20px;
+        }
       }
     }
 
