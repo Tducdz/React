@@ -55,12 +55,40 @@ const DetailQuiz = () => {
         return item;
       });
     }
-    console.log(question);
     let index = dataQuizClone.findIndex((item) => +item.id === +questionId);
     if (index > -1) {
       dataQuizClone[index] = question;
       setDataQuiz(dataQuizClone);
     }
+  };
+
+  const handleFinishQuiz = () => {
+    let payload = {
+      quizId: +quizId,
+      answers: [],
+    };
+
+    let answers = [];
+    if (dataQuiz && dataQuiz.length > 0) {
+      dataQuiz.forEach((item) => {
+        let questionId = item.id;
+        let userAnswerId = [];
+
+        item.answers.forEach((a) => {
+          if (a.isSelected === true) {
+            userAnswerId.push(a.id);
+          }
+        });
+
+        answers.push({
+          questionId: +questionId,
+          userAnswerId: userAnswerId,
+        });
+      });
+    }
+
+    payload.answers = answers;
+    console.log(payload);
   };
 
   return (
@@ -90,7 +118,10 @@ const DetailQuiz = () => {
           <button className="btn btn-primary" onClick={() => handleNext()}>
             Next
           </button>
-          <button className="btn btn-warning" onClick={() => handleNext()}>
+          <button
+            className="btn btn-warning"
+            onClick={() => handleFinishQuiz()}
+          >
             Finish
           </button>
         </div>
