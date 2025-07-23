@@ -13,10 +13,11 @@ import { FaGem, FaGithub } from "react-icons/fa";
 import sidebarBg from "../../assets/bg2.jpg";
 import { MdDashboard } from "react-icons/md";
 import { PiExamBold } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SideBar = (props) => {
   const { collapsed, toggled, handleToggleSidebar } = props;
+  const navigate = useNavigate();
   return (
     <>
       <ProSidebar
@@ -28,6 +29,7 @@ const SideBar = (props) => {
       >
         <SidebarHeader>
           <div
+            onClick={() => navigate("/")}
             style={{
               padding: "24px",
               textTransform: "uppercase",
@@ -35,7 +37,7 @@ const SideBar = (props) => {
               fontSize: 14,
               letterSpacing: "1px",
               overflow: "hidden",
-              // textOverflow: "ellipsis",
+              cursor: "pointer",
               whiteSpace: "nowrap",
             }}
             className="pro-sidebar-header-text"
@@ -65,7 +67,11 @@ const SideBar = (props) => {
                 User Management
                 <Link to="manage-users" />
               </MenuItem>
-              <MenuItem> Manage Quiz Questions</MenuItem>
+              <MenuItem>
+                {" "}
+                Manage Quiz Questions
+                <Link to="manage-quizzes" />
+              </MenuItem>
               <MenuItem> Manage Questions</MenuItem>
             </SubMenu>
           </Menu>
