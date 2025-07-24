@@ -7,9 +7,9 @@ import TableQuiz from "./TableQuiz";
 import Accordion from "react-bootstrap/Accordion";
 
 const options = [
-  { value: "EASY", label: "EASY" },
-  { value: "MEDIUM", label: "MEDIUM" },
-  { value: "HARD", label: "HARD" },
+  { value: "EASY", label: "Easy" },
+  { value: "MEDIUM", label: "Medium" },
+  { value: "HARD", label: "Hard" },
 ];
 
 const ManageQuiz = (props) => {

@@ -29,12 +29,12 @@ const ManageUser = (props) => {
     fetchListUsersWithPaginate(currentPage);
   }, []);
 
-  const fetchListUsers = async () => {
-    let res = await getAllUser();
-    if (res.EC === 0) {
-      setListUsers(res.DT);
-    }
-  };
+  // const fetchListUsers = async () => {
+  //   let res = await getAllUser();
+  //   if (res.EC === 0) {
+  //     setListUsers(res.DT);
+  //   }
+  // };
 
   const fetchListUsersWithPaginate = async (page) => {
     let res = await getUserWithPaginate(page, LIMIT_USER);
