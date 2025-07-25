@@ -1,12 +1,21 @@
 import SideBar from "./SideBar";
 import "./Admin.scss";
 import { FaBars } from "react-icons/fa";
-import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
 const Admin = (props) => {
   const [collapsed, setCollapsed] = useState(false);
+
+  const scrollRef = useRef();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    if (scrollRef.current && scrollRef.current._container) {
+      scrollRef.current._container.scrollTop = 0;
+    }
+  }, [pathname]);
 
   return (
     <div className="admin-container">
@@ -17,7 +26,7 @@ const Admin = (props) => {
         <div className="admin-header">
           <FaBars onClick={() => setCollapsed(!collapsed)} />
         </div>
-        <PerfectScrollbar>
+        <PerfectScrollbar containerRef={(ref) => (scrollRef.current = ref)}>
           <div className="admin-main">
             <Outlet />
           </div>
