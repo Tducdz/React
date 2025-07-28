@@ -1,21 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import "./Questions.scss";
 import { FaPlusCircle } from "react-icons/fa";
 import { FaMinusCircle } from "react-icons/fa";
 import { v4 as uuidv4 } from "uuid";
 import _ from "lodash";
+import Lightbox from "yet-another-react-lightbox";
+import {
+  getAllQuizForAdmin,
+  postCreateNewAnswerForQuestion,
+  postCreateNewQuestionForQuiz,
+} from "../../../../services/apiService";
+import { toast } from "react-toastify";
 
 const Questions = (props) => {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
+  const [open, setOpen] = useState(false);
+  const [dataImagePreview, setDataImagePreview] = useState({
+    title: "",
+    url: "",
+  });
 
+  const [listQuiz, setListQuiz] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState({});
 
-  const [questions, setQuestions] = useState([
+  const fetchQuiz = async () => {
+    let res = await getAllQuizForAdmin();
+    if (res && res.EC === 0) {
+      let newQuiz = res.DT.map((item) => {
+        return {
+          value: item.id,
+          label: `${item.id} - ${item.description}`,
+        };
+      });
+      setListQuiz(newQuiz);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuiz();
+  }, []);
+
+  const initQuestion = [
     {
       id: uuidv4(),
       description: "",
@@ -29,7 +54,9 @@ const Questions = (props) => {
         },
       ],
     },
-  ]);
+  ];
+
+  const [questions, setQuestions] = useState(initQuestion);
 
   const handleAddRemoveQuestion = (type, id) => {
     if (type === "ADD") {
@@ -127,8 +154,81 @@ const Questions = (props) => {
     }
   };
 
-  const handleSubmitQuestionForQuiz = () => {
-    alert(questions);
+  const handlePreviewImage = (questionId) => {
+    let questionsClone = _.cloneDeep(questions);
+    let index = questionsClone.findIndex((item) => item.id === questionId);
+
+    if (index > -1) {
+      setDataImagePreview({
+        url: URL.createObjectURL(questionsClone[index].imageFile),
+        title: questionsClone[index].imageName,
+      });
+      setOpen(true);
+    }
+  };
+
+  const handleSubmitQuestionForQuiz = async () => {
+    // Validate quiz
+    if (_.isEmpty(selectedQuiz)) {
+      toast.error("Please choose a Quiz!");
+      return;
+    }
+
+    // Validate question
+    let isValid = true;
+    let indexQ = 0;
+    for (let i = 0; i < questions.length; i++) {
+      if (!questions[i].description) {
+        isValid = false;
+        indexQ = i;
+        break;
+      }
+    }
+    if (isValid === false) {
+      toast.error(`Question ${indexQ + 1} is blank.`);
+      return;
+    }
+
+    // Validate answer
+    isValid = true;
+    indexQ = 0;
+    let indexA = 0;
+    for (let i = 0; i < questions.length; i++) {
+      for (let j = 0; j < questions[i].answers.length; j++) {
+        if (!questions[i].answers[j].description) {
+          isValid = false;
+          indexA = j;
+          break;
+        }
+      }
+      indexQ = i;
+      if (isValid === false) {
+        toast.error(`Answer ${indexA + 1} in question ${indexQ + 1} is blank.`);
+        break;
+      }
+    }
+
+    // Submit Question
+    for (const question of questions) {
+      const q = await postCreateNewQuestionForQuiz(
+        +selectedQuiz.value,
+        question.description,
+        question.imageFile
+      );
+      // Submit Answer
+      for (const answer of question.answers) {
+        await postCreateNewAnswerForQuestion(
+          answer.description,
+          answer.isCorrect,
+          q.DT.id
+        );
+      }
+    }
+
+    if (isValid === true) {
+      toast.success("Create questions and answers succed!");
+      setQuestions(initQuestion);
+    }
   };
 
   return (
@@ -141,7 +241,16 @@ const Questions = (props) => {
             <Select
               defaultValue={selectedQuiz}
               onChange={setSelectedQuiz}
-              options={options}
+              options={listQuiz}
+              theme={(theme) => ({
+                ...theme,
+                borderRadius: 0,
+                colors: {
+                  ...theme.colors,
+                  primary25: "rgb(0, 191, 255)",
+                  primary: "black",
+                },
+              })}
             />
           </div>
           <div className="mt-3">
@@ -153,7 +262,10 @@ const Questions = (props) => {
                   <div key={question.id} className="question-main mb-4">
                     <div className="desc-file">
                       <div className="add-question">
-                        <div className="form-floating mt-2">
+                        <div
+                          className="form-floating mt-2"
+                          style={{ position: "relative", zIndex: "0" }}
+                        >
                           <input
                             type="text"
                             className="form-control"
@@ -186,9 +298,16 @@ const Questions = (props) => {
                           }
                         />
                         <span>
-                          {question.imageName
-                            ? question.imageName
-                            : "No file choosen"}
+                          {question.imageName ? (
+                            <span
+                              style={{ cursor: "pointer" }}
+                              onClick={() => handlePreviewImage(question.id)}
+                            >
+                              {question.imageName}
+                            </span>
+                          ) : (
+                            "No file chosen"
+                          )}
                         </span>
                       </div>
                       <div className="answer-control">
@@ -224,7 +343,11 @@ const Questions = (props) => {
                                 )
                               }
                             />
-                            <div className="form-floating answer-name">
+
+                            <div
+                              className="form-floating answer-name"
+                              style={{ position: "relative", zIndex: "0" }}
+                            >
                               <input
                                 value={answer.description}
                                 type="text"
@@ -277,6 +400,16 @@ const Questions = (props) => {
                 </button>
               </div>
             )}
+            <Lightbox
+              open={open}
+              close={() => setOpen(false)}
+              slides={[
+                {
+                  src: dataImagePreview.url,
+                  alt: dataImagePreview.title,
+                },
+              ]}
+            />
           </div>
         </div>
       </div>
