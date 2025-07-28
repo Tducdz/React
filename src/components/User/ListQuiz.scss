@@ -4,6 +4,8 @@ body {
 
   .list-quiz-container {
     display: flex;
-    gap: 48px;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
