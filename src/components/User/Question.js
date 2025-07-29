@@ -1,7 +1,11 @@
+import { useState } from "react";
 import _ from "lodash";
+import Lightbox from "yet-another-react-lightbox";
 
 const Question = (props) => {
   const { data, index } = props;
+
+  const [open, setOpen] = useState(false);
   if (_.isEmpty(data)) {
     return <></>;
   }
@@ -13,7 +17,22 @@ const Question = (props) => {
   return (
     <>
       <div className="q-img">
-        <img src={`data:image/png;base64,${data.imageFile}`} alt="" />
+        <img
+          style={{ cursor: "pointer" }}
+          onClick={() => setOpen(true)}
+          src={`data:image/png;base64,${data.imageFile}`}
+          alt=""
+        />
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          slides={[
+            {
+              src: `data:image/png;base64,${data.imageFile}`,
+              alt: "Question image",
+            },
+          ]}
+        />
       </div>
 
       <div className="question">
