@@ -5,6 +5,7 @@ import { postRegister } from "../../services/apiService";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ImSpinner } from "react-icons/im";
+import Language from "../Header/Language";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -54,6 +55,7 @@ const Register = (props) => {
       <div className="header">
         <span>Already have an account?</span>
         <button onClick={() => navigate("/login")}>Sign in</button>
+        <Language />
       </div>
       <div className="title col-4 mx-auto">TDucQuiz</div>
       <div className="welcome col-4 mx-auto">Hello, who's this?</div>

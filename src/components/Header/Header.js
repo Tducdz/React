@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../services/apiService";
 import { toast } from "react-toastify";
 import { doLogout } from "../../redux/action/userAction";
+import Language from "./Language";
 
 const Header = () => {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -53,6 +54,7 @@ const Header = () => {
               Admin
             </NavLink>
           </Nav>
+
           <Nav>
             {isAuthenticated === false ? (
               <>
@@ -72,6 +74,7 @@ const Header = () => {
               </NavDropdown>
             )}
           </Nav>
+          <Language />
         </Navbar.Collapse>
       </Container>
     </Navbar>
