@@ -94,7 +94,6 @@ const DetailQuiz = () => {
 
     payload.answers = answers;
     let res = await postSubmitQuiz(payload);
-    console.log(res);
     if (res.EC === 0) {
       setDataModalResult({
         countTotal: res.DT.countTotal,

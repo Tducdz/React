@@ -1,8 +1,7 @@
 import ModalCreateUser from "./ModalCreateUser";
 import { FaUserPlus } from "react-icons/fa";
-import TableUser from "./TableUser";
 import { useEffect, useState } from "react";
-import { getAllUser, getUserWithPaginate } from "../../../services/apiService";
+import { getUserWithPaginate } from "../../../services/apiService";
 import ModalEditUser from "./ModalEditUser";
 import ModalViewUser from "./ModalViewUser";
 import ModalDeleteUser from "./ModalDeleteUser";
@@ -39,7 +38,6 @@ const ManageUser = (props) => {
   const fetchListUsersWithPaginate = async (page) => {
     let res = await getUserWithPaginate(page, LIMIT_USER);
     if (res.EC === 0) {
-      console.log(res.DT);
       setListUsers(res.DT.users);
       setPageCount(res.DT.totalPages);
     }
