@@ -73,8 +73,8 @@ const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             )}
+            <Language />
           </Nav>
-          <Language />
         </Navbar.Collapse>
       </Container>
     </Navbar>
