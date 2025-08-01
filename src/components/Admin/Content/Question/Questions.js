@@ -12,8 +12,11 @@ import {
   postCreateNewQuestionForQuiz,
 } from "../../../../services/apiService";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const Questions = (props) => {
+  const { t } = useTranslation();
+
   const [open, setOpen] = useState(false);
   const [dataImagePreview, setDataImagePreview] = useState({
     title: "",
@@ -234,10 +237,10 @@ const Questions = (props) => {
   return (
     <>
       <div className="questions-container">
-        <div className="title">Manage Questions</div>
+        <div className="title">{t("questions.title1")}</div>
         <div className="add-new-question">
           <div className="col-6 form-group">
-            <label>Select Quiz</label>
+            <label>{t("questions.label4")}</label>
             <Select
               defaultValue={selectedQuiz}
               onChange={setSelectedQuiz}
@@ -254,7 +257,7 @@ const Questions = (props) => {
             />
           </div>
           <div className="mt-3">
-            Add Questions
+            {t("questions.title2")}
             {questions &&
               questions.length > 0 &&
               questions.map((question, index) => {
@@ -279,7 +282,10 @@ const Questions = (props) => {
                               )
                             }
                           />
-                          <label>Question {index + 1} - Description</label>
+                          <label>
+                            {t("questions.label1")} {index + 1} -{" "}
+                            {t("questions.label2")}
+                          </label>
                         </div>
                       </div>
                       <div className="upload-file">
@@ -287,7 +293,7 @@ const Questions = (props) => {
                           className="label-upload"
                           htmlFor={`${question.id}`}
                         >
-                          Upload image
+                          {t("questions.upload1")}
                         </label>
                         <input
                           type="file"
@@ -306,7 +312,7 @@ const Questions = (props) => {
                               {question.imageName}
                             </span>
                           ) : (
-                            "No file chosen"
+                            t("questions.upload2")
                           )}
                         </span>
                       </div>
@@ -362,7 +368,9 @@ const Questions = (props) => {
                                   )
                                 }
                               />
-                              <label>Answer {index + 1}</label>
+                              <label>
+                                {t("questions.label3")} {index + 1}
+                              </label>
                             </div>
                             <div className="answer-control">
                               <FaPlusCircle
@@ -396,7 +404,7 @@ const Questions = (props) => {
                   className="btn btn-warning"
                   onClick={() => handleSubmitQuestionForQuiz()}
                 >
-                  Save Question
+                  {t("questions.btn1")}
                 </button>
               </div>
             )}

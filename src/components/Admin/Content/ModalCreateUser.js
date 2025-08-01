@@ -5,9 +5,11 @@ import "./ManageUser.scss";
 import { BsCloudUpload } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { postCreateNewUser } from "../../../services/apiService";
+import { useTranslation } from "react-i18next";
 
 const ModalCreateUser = (props) => {
   const { show, setShow } = props;
+  const { t } = useTranslation();
 
   const handleClose = () => {
     setEmail("");
@@ -80,12 +82,12 @@ const ModalCreateUser = (props) => {
         className="modal-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add new user</Modal.Title>
+          <Modal.Title>{t("modalCreateUser.title1")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Email</label>
+              <label className="form-label">{t("modalCreateUser.body1")}</label>
               <input
                 type="email"
                 className="form-control"
@@ -94,7 +96,7 @@ const ModalCreateUser = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Password</label>
+              <label className="form-label">{t("modalCreateUser.body2")}</label>
               <input
                 type="password"
                 className="form-control"
@@ -103,7 +105,7 @@ const ModalCreateUser = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Username</label>
+              <label className="form-label">{t("modalCreateUser.body3")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -112,19 +114,19 @@ const ModalCreateUser = (props) => {
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Role</label>
+              <label className="form-label">{t("modalCreateUser.body4")}</label>
               <select
                 className="form-select"
                 value={role}
                 onChange={(event) => setRole(event.target.value)}
               >
-                <option value="USER">User</option>
-                <option value="ADMIN">Admin</option>
+                <option value="USER">{t("modalCreateUser.role1")}</option>
+                <option value="ADMIN">{t("modalCreateUser.role2")}</option>
               </select>
             </div>
             <div className="col-md-12">
               <label className="form-label label-upload" htmlFor="upload-file">
-                <BsCloudUpload /> Upload File Image
+                <BsCloudUpload /> {t("modalCreateUser.upload1")}
               </label>
               <input
                 id="upload-file"
@@ -138,7 +140,7 @@ const ModalCreateUser = (props) => {
                 {previewImage ? (
                   <img alt="" src={previewImage} />
                 ) : (
-                  "Preview Image"
+                  t("modalCreateUser.preview")
                 )}
               </span>
             </div>
@@ -146,7 +148,7 @@ const ModalCreateUser = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("modalCreateUser.footer1")}
           </Button>
           <Button
             variant="primary"
@@ -154,7 +156,7 @@ const ModalCreateUser = (props) => {
               handleSubmitCreateUser();
             }}
           >
-            Add
+            {t("modalCreateUser.footer2")}
           </Button>
         </Modal.Footer>
       </Modal>

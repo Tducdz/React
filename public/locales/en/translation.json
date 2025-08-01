@@ -1,10 +1,193 @@
 {
   "homepage": {
     "title1": "There's a better way to ask",
-    "title2": "You don't want to make a boring form. And you audience won't answer one. Create a typeform instead-and make everyone happy.",
+    "title2": "You don't want to make a boring form. And you audience won't answer one. Create a TDucquiz instead-and make everyone happy.",
     "title3": {
       "login": "Get's started. It's free",
       "loggedIn": "Doing Quiz Now"
     }
+  },
+  "header": {
+    "nav1": "Home",
+    "nav2": "User",
+    "nav3": "Admin",
+    "btn1": "Login",
+    "btn2": "Sign up",
+    "drop1": "Settings",
+    "drop2": "Profile",
+    "drop3": "Logout"
+  },
+  "detailQuiz": {
+    "title": "Quiz",
+    "btn1": "Prev",
+    "btn2": "Next",
+    "btn3": "Finish"
+  },
+  "question": {
+    "text": "Question"
+  },
+  "modalResult": {
+    "title": "Your Result",
+    "body1": "Total Question",
+    "body2": "Total Correct Answers",
+    "btn1": "Show Answers",
+    "btn2": "Close"
+  },
+  "listQuiz": {
+    "title1": "Quiz",
+    "btn1": "Start Now",
+    "text1": "You don't have any quiz now..."
+  },
+  "sideBar": {
+    "title1": "Features",
+    "item1": "Dashboard",
+    "item2": "User Management",
+    "item3": "Manage Quiz Questions",
+    "item4": "Manage Questions"
+  },
+  "admin": {
+    "title1": "Settings",
+    "item1": "Profile",
+    "item2": "Logout"
+  },
+  "dashboard": {
+    "data1": "Quizzes",
+    "data2": "Questions",
+    "data3": "Answers",
+    "title1": "Analytics DashBoard",
+    "text1": "Total Users",
+    "text2": "Total Quizzes",
+    "text3": "Total Questions",
+    "text4": "Total Answers"
+  },
+  "manageUser": {
+    "title1": "Manage User",
+    "btn1": "Add new user"
+  },
+  "modalCreateUser": {
+    "title1": "Add new user",
+    "body1": "Email",
+    "body2": "Password",
+    "body3": "Username",
+    "body4": "Role",
+    "role1": "User",
+    "role2": "Admin",
+    "upload1": "Upload File Image",
+    "footer1": "Close",
+    "footer2": "Add",
+    "preview": "Preview Image"
+  },
+  "tableUserPaginate": {
+    "th1": "ID",
+    "th2": "Username",
+    "th3": "Email",
+    "th4": "Role",
+    "th5": "Action",
+    "btn1": "View",
+    "btn2": "Edit",
+    "btn3": "Delete",
+    "text1": "Not found data",
+    "paginate1": "< Previous",
+    "paginate2": "Next >"
+  },
+  "modalViewUser": {
+    "title1": "View a user",
+    "label1": "Email",
+    "label2": "Username",
+    "label3": "Role",
+    "role1": "User",
+    "role2": "Admin",
+    "btn1": "Close",
+    "preview": "Preview Image"
+  },
+  "modalEditUser": {
+    "title1": "Edit a user",
+    "label1": "Email",
+    "label2": "Password",
+    "label3": "Username",
+    "label4": "Role",
+    "role1": "User",
+    "role2": "Admin",
+    "upload1": "Upload File Image",
+    "btn1": "Close",
+    "btn2": "Save",
+    "preview": "Preview Image"
+  },
+  "modalDeleteUser": {
+    "title1": "Confirm Delete User?",
+    "body1": "Are you sure to delete this user?",
+    "body2": "Email:",
+    "btn1": "Cancel",
+    "btn2": "Confirm"
+  },
+  "questions": {
+    "title1": "Manage Questions",
+    "title2": "Add Questions",
+    "label1": "Question",
+    "label2": "Description",
+    "label3": "Answer",
+    "label4": "Select Quiz",
+    "upload1": "Upload image",
+    "upload2": "No file chosen",
+    "btn1": "Add Question"
+  },
+  "manageQuiz": {
+    "item1": "Manage quizzes",
+    "item2": "Update Q/A quizzes",
+    "item3": "Assign to Users",
+    "title1": "Add new Quiz",
+    "label1": "Name",
+    "label2": "Description",
+    "label3": "Upload Image",
+    "btn1": "Save",
+    "option": "Quiz type",
+    "option1": "Easy",
+    "option2": "Medium",
+    "option3": "Hard"
+  },
+  "tableQuiz": {
+    "title1": "List Quizzes",
+    "th1": "ID",
+    "th2": "Name",
+    "th3": "Description",
+    "th4": "Type",
+    "th5": "Action",
+    "btn1": "Edit",
+    "btn2": "Delete"
+  },
+  "modalEditQuiz": {
+    "title1": "Edit a Quiz",
+    "label1": "Name",
+    "label2": "Description",
+    "label3": "Difficulty",
+    "option1": "Easy",
+    "option2": "Medium",
+    "option3": "Hard",
+    "upload1": "Upload File Image",
+    "preview": "Preview Image",
+    "btn1": "Close",
+    "btn2": "Save"
+  },
+  "modalDeleteQuiz": {
+    "title1": "Confirm Delete Quiz?",
+    "body1": "Are you sure to delete this quiz?",
+    "text1": "Name:",
+    "btn1": "Cancel",
+    "btn2": "Confirm"
+  },
+  "quizQA": {
+    "label1": "Select Quiz",
+    "label2": "Add Questions",
+    "label3": "Question",
+    "label4": "Description",
+    "label5": "Answer",
+    "upload1": "Upload image",
+    "preview": "No file chosen",
+    "btn1": "Save Question"
+  },
+  "assignQuiz": {
+    "label1": "Select Quiz",
+    "label2": "Select User",
+    "btn1": "Assign"
   }
 }

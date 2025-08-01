@@ -1,10 +1,193 @@
 {
   "homepage": {
     "title1": "Có cách tốt hơn để đặt câu hỏi",
-    "title2": "Bạn không muốn tạo một biểu mẫu nhàm chán. Và khán giả của bạn cũng sẽ không muốn trả lời một cái như vậy. Hãy tạo một biểu mẫu với Typeform - và khiến tất cả mọi người hài lòng.",
+    "title2": "Bạn không muốn tạo một biểu mẫu nhàm chán. Và người dùng của bạn cũng sẽ không muốn trả lời một cái như vậy. Hãy tạo một biểu mẫu với TDucQuiz - và khiến tất cả mọi người hài lòng.",
     "title3": {
       "login": "Bắt đầu ngay. Miễn phí",
       "loggedIn": "Làm bài ngay"
     }
+  },
+  "header": {
+    "nav1": "Trang chủ",
+    "nav2": "Người dùng",
+    "nav3": "Quản trị",
+    "btn1": "Đăng nhâp",
+    "btn2": "Đăng ký",
+    "drop1": "Cài đặt",
+    "drop2": "Hồ sơ",
+    "drop3": "Đăng xuất"
+  },
+  "detailQuiz": {
+    "title": "Bài ",
+    "btn1": "Trước",
+    "btn2": "Sau",
+    "btn3": "Kết thúc"
+  },
+  "question": {
+    "text": "Câu hỏi"
+  },
+  "modalResult": {
+    "title": "Kết quả của bạn",
+    "body1": "Tổng số câu hỏi",
+    "body2": "Số câu trả lời đúng",
+    "btn1": "Xem đáp án",
+    "btn2": "Đóng"
+  },
+  "listQuiz": {
+    "title1": "Bài ",
+    "btn1": "Bắt đầu",
+    "text1": "Bạn không có bài tập nào..."
+  },
+  "sideBar": {
+    "title1": "Chức Năng",
+    "item1": "Tổng Quan",
+    "item2": "Quản Lý Người Dùng",
+    "item3": "Quản Lý Bài Trắc Nghiệm",
+    "item4": "Quản Lý Câu Hỏi"
+  },
+  "admin": {
+    "title1": "Cài đặt",
+    "item1": "Hồ sơ",
+    "item2": "Đăng xuất"
+  },
+  "dashboard": {
+    "data1": "Bài trắc nghiệm",
+    "data2": "Câu hỏi",
+    "data3": "Đáp án",
+    "title1": "Phân Tích Tổng Quan",
+    "text1": "Số người dùng",
+    "text2": "Số bài trắc nghiệm",
+    "text3": "Số câu hỏi",
+    "text4": "Số đáp án"
+  },
+  "manageUser": {
+    "title1": "Quản Lý Người Dùng",
+    "btn1": "Thêm người dùng"
+  },
+  "modalCreateUser": {
+    "title1": "Thêm người dùng",
+    "body1": "Email",
+    "body2": "Mật khẩu",
+    "body3": "Tên người dùng",
+    "body4": "Vai trò",
+    "role1": "Người dùng",
+    "role2": "Quản trị viên",
+    "upload1": "Tải ảnh lên",
+    "footer1": "Đóng",
+    "footer2": "Thêm",
+    "preview": "Ảnh xem trước"
+  },
+  "tableUserPaginate": {
+    "th1": "ID",
+    "th2": "Tên người dùng",
+    "th3": "Email",
+    "th4": "Vai trò",
+    "th5": "Hành động",
+    "btn1": "Xem",
+    "btn2": "Sửa",
+    "btn3": "Xóa",
+    "text1": "Không tìm thấy dữ liệu",
+    "paginate1": "< Trước",
+    "paginate2": "Sau >"
+  },
+  "modalViewUser": {
+    "title1": "Xem người dùng",
+    "label1": "Email",
+    "label2": "Tên người dùng",
+    "label3": "Vai trò",
+    "role1": "Người dùng",
+    "role2": "Quản trị viên",
+    "btn1": "Đóng",
+    "preview": "Ảnh xem trước"
+  },
+  "modalEditUser": {
+    "title1": "Sửa người dùng",
+    "label1": "Email",
+    "label2": "Mật khẩu",
+    "label3": "Tên người dùng",
+    "label4": "Vai trò",
+    "role1": "Người dùng",
+    "role2": "Quản trị viên",
+    "upload1": "Tải ảnh lên",
+    "btn1": "Đóng",
+    "btn2": "Lưu",
+    "preview": "Ảnh xem trước"
+  },
+  "modalDeleteUser": {
+    "title1": "Xóa người dùng?",
+    "body1": "Bạn chắc chắn muốn xóa người dùng này?",
+    "body2": "Email:",
+    "btn1": "Hủy",
+    "btn2": "Xác nhận"
+  },
+  "questions": {
+    "title1": "Quản Lý Câu Hỏi",
+    "title2": "Thêm câu hỏi",
+    "label1": "Câu hỏi",
+    "label2": "Mô tả",
+    "label3": "Đáp án",
+    "label4": "Chọn bài trắc nghiệm",
+    "upload1": "Tải ảnh lên",
+    "upload2": "Chưa chọn ảnh",
+    "btn1": "Thêm câu hỏi"
+  },
+  "manageQuiz": {
+    "item1": "Quản Lý Bài Trắc Nghiệm",
+    "item2": "Cập nhật câu hỏi / đáp án",
+    "item3": "Giao bài trắc nghiệm",
+    "title1": "Thêm bài trắc nghiệm mới",
+    "label1": "Tê",
+    "label2": "Mô tả",
+    "label3": "Tải ảnh lên",
+    "btn1": "Lưu",
+    "option": "Độ khó",
+    "option1": "Dễ",
+    "option2": "Trung bình",
+    "option3": "Khó"
+  },
+  "tableQuiz": {
+    "title1": "Danh sách bài trắc nghiệm",
+    "th1": "ID",
+    "th2": "Tên",
+    "th3": "Mô tả",
+    "th4": "Loại",
+    "th5": "Hành động",
+    "btn1": "Sửa",
+    "btn2": "Xóa"
+  },
+  "modalEditQuiz": {
+    "title1": "Sửa bài trắc nghiệm",
+    "label1": "Tên",
+    "label2": "Mô tả",
+    "label3": "Độ khó",
+    "option1": "Dễ",
+    "option2": "Trung bình",
+    "option3": "Khó",
+    "upload1": "Tải ảnh lên",
+    "preview": "Ảnh xem trước",
+    "btn1": "Đóng",
+    "btn2": "Lưu"
+  },
+  "modalDeleteQuiz": {
+    "title1": "Xóa bài trắc nghiệm?",
+    "body1": "Bạn chắc chắn muốn xóa bài trắc nghiệm này?",
+    "text1": "Tên:",
+    "btn1": "Hủy",
+    "btn2": "Xác nhận"
+  },
+  "quizQA": {
+    "label1": "Chọn bài trắc nghiệm",
+    "label2": "Thêm câu hỏi",
+    "label3": "Câu hỏi",
+    "label4": "Mô tả",
+    "label5": "Đáp án",
+    "upload1": "Tải ảnh lên",
+    "preview": "Chưa chọn ảnh",
+    "btn1": "Lưu câu hỏi"
+  },
+  "assignQuiz": {
+    "label1": "Chọn bài trắc nghiệm",
+    "label2": "Chọn người dung",
+    "btn1": "Giao bài"
   }
 }

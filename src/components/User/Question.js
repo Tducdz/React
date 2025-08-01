@@ -1,9 +1,12 @@
 import { useState } from "react";
 import _ from "lodash";
 import Lightbox from "yet-another-react-lightbox";
+import { useTranslation } from "react-i18next";
 
 const Question = (props) => {
   const { data, index } = props;
+
+  const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);
   if (_.isEmpty(data)) {
@@ -36,7 +39,7 @@ const Question = (props) => {
       </div>
 
       <div className="question">
-        Question {index + 1}: {data.description}?
+        {`${t("question.text")} ${index + 1}: ${data.description}?`}
       </div>
 
       <div className="answer">

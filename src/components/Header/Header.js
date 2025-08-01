@@ -8,6 +8,7 @@ import { logout } from "../../services/apiService";
 import { toast } from "react-toastify";
 import { doLogout } from "../../redux/action/userAction";
 import Language from "./Language";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
@@ -15,6 +16,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleLogin = () => {
     navigate("/login");
@@ -45,13 +48,13 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavLink to="/" className="nav-link">
-              Home
+              {t("header.nav1")}
             </NavLink>
             <NavLink to="/users" className="nav-link">
-              Users
+              {t("header.nav2")}
             </NavLink>
             <NavLink to="/admins" className="nav-link">
-              Admin
+              {t("header.nav3")}
             </NavLink>
           </Nav>
 
@@ -59,17 +62,17 @@ const Header = () => {
             {isAuthenticated === false ? (
               <>
                 <button className="btn-login" onClick={() => handleLogin()}>
-                  Login
+                  {t("header.btn1")}
                 </button>
                 <button className="btn-signup" onClick={() => handleRegister()}>
-                  Sign up
+                  {t("header.btn2")}
                 </button>
               </>
             ) : (
-              <NavDropdown title="Settings" id="basic-nav-dropdown">
-                <NavDropdown.Item>Profile</NavDropdown.Item>
+              <NavDropdown title={t("header.drop1")} id="basic-nav-dropdown">
+                <NavDropdown.Item>{t("header.drop2")}</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => handleLogOut()}>
-                  Logout
+                  {t("header.drop3")}
                 </NavDropdown.Item>
               </NavDropdown>
             )}

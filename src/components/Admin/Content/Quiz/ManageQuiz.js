@@ -6,13 +6,8 @@ import TableQuiz from "./TableQuiz";
 import Accordion from "react-bootstrap/Accordion";
 import QuizQA from "./QuizQA";
 import AssignQuiz from "./AssignQuiz";
+import { useTranslation } from "react-i18next";
 import "./ManageQuiz.scss";
-
-const options = [
-  { value: "EASY", label: "Easy" },
-  { value: "MEDIUM", label: "Medium" },
-  { value: "HARD", label: "Hard" },
-];
 
 const ManageQuiz = (props) => {
   const [name, setName] = useState("");
@@ -21,6 +16,13 @@ const ManageQuiz = (props) => {
   const [image, setImage] = useState(null);
 
   const fileInputRef = useRef(null);
+  const { t } = useTranslation();
+
+  const options = [
+    { value: "EASY", label: t("manageQuiz.option1") },
+    { value: "MEDIUM", label: t("manageQuiz.option2") },
+    { value: "HARD", label: t("manageQuiz.option3") },
+  ];
 
   const handleChangeFile = (event) => {
     const file = event.target.files[0];
@@ -55,14 +57,14 @@ const ManageQuiz = (props) => {
       <div className="quiz-container">
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
-            <Accordion.Header>Manage quizzes</Accordion.Header>
+            <Accordion.Header>{t("manageQuiz.item1")}</Accordion.Header>
             <Accordion.Body>
               {" "}
               <div className="add-new">
                 {" "}
                 <fieldset className="border rounded-3 p-3">
                   <legend className="float-none w-auto px-3">
-                    Add new Quiz
+                    {t("manageQuiz.title1")}
                   </legend>
                   <div className="form-floating mb-3">
                     <input
@@ -72,7 +74,7 @@ const ManageQuiz = (props) => {
                       value={name}
                       onChange={(event) => setName(event.target.value)}
                     />
-                    <label>Name</label>
+                    <label>{t("manageQuiz.label1")}</label>
                   </div>
                   <div className="form-floating">
                     <input
@@ -82,7 +84,7 @@ const ManageQuiz = (props) => {
                       value={description}
                       onChange={(event) => setDescription(event.target.value)}
                     />
-                    <label>Description</label>
+                    <label>{t("manageQuiz.label2")}</label>
                   </div>
 
                   <div className="my-3">
@@ -90,11 +92,11 @@ const ManageQuiz = (props) => {
                       defaultValue={type}
                       onChange={setType}
                       options={options}
-                      placeholder={"Quiz type"}
+                      placeholder={t("manageQuiz.option")}
                     />
                   </div>
                   <div className="more-actions">
-                    <label className="mb-2">Upload Image</label>
+                    <label className="mb-2">{t("manageQuiz.label3")}</label>
                     <input
                       className="form-control"
                       type="file"
@@ -107,7 +109,7 @@ const ManageQuiz = (props) => {
                       className="btn btn-warning"
                       onClick={() => handleSubmitQuiz()}
                     >
-                      Save
+                      {t("manageQuiz.btn1")}
                     </button>
                   </div>
                 </fieldset>
@@ -118,13 +120,13 @@ const ManageQuiz = (props) => {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
-            <Accordion.Header>Update Q/A quizzes</Accordion.Header>
+            <Accordion.Header>{t("manageQuiz.item2")}</Accordion.Header>
             <Accordion.Body>
               <QuizQA />
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>Assign to Users</Accordion.Header>
+            <Accordion.Header>{t("manageQuiz.item3")}</Accordion.Header>
             <Accordion.Body>
               <AssignQuiz />
             </Accordion.Body>

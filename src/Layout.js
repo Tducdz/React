@@ -37,8 +37,8 @@ const Layout = (props) => {
               </PrivateRoute>
             }
           />
+          <Route path="/quiz/:id" element={<DetailQuiz />} />
         </Route>
-        <Route path="/quiz/:id" element={<DetailQuiz />} />
 
         <Route
           path="admins"

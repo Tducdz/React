@@ -1,8 +1,9 @@
 import ReactPaginate from "react-paginate";
-import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const TableUserPaginate = (props) => {
   const { listUsers, pageCount } = props;
+  const { t } = useTranslation();
 
   const handlePageClick = (event) => {
     props.fetchListUsersWithPaginate(+event.selected + 1);
@@ -15,11 +16,11 @@ const TableUserPaginate = (props) => {
       <table className="table table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Role</th>
-            <th scope="col">Action</th>
+            <th scope="col">{t("tableUserPaginate.th1")}</th>
+            <th scope="col">{t("tableUserPaginate.th2")}</th>
+            <th scope="col">{t("tableUserPaginate.th3")}</th>
+            <th scope="col">{t("tableUserPaginate.th4")}</th>
+            <th scope="col">{t("tableUserPaginate.th5")}</th>
           </tr>
         </thead>
         <tbody>
@@ -37,19 +38,19 @@ const TableUserPaginate = (props) => {
                       className="btn btn-secondary"
                       onClick={() => props.handleClickBtnView(user)}
                     >
-                      View
+                      {t("tableUserPaginate.btn1")}
                     </button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnEdit(user)}
                     >
-                      Edit
+                      {t("tableUserPaginate.btn2")}
                     </button>
                     <button
                       className="btn btn-danger"
                       onClick={() => props.handleClickBtnDelete(user)}
                     >
-                      Delete
+                      {t("tableUserPaginate.btn3")}
                     </button>
                   </td>
                 </tr>
@@ -59,7 +60,7 @@ const TableUserPaginate = (props) => {
           {listUsers && listUsers.length === 0 && (
             <tr>
               <td colSpan={"5"} style={{ textAlign: "center" }}>
-                Not found data
+                {t("tableUserPaginate.text1")}
               </td>
             </tr>
           )}
@@ -67,12 +68,12 @@ const TableUserPaginate = (props) => {
       </table>
       <div className="user-pagination d-flex justify-content-center">
         <ReactPaginate
-          nextLabel="Next >"
+          previousLabel={t("tableUserPaginate.paginate1")}
+          nextLabel={t("tableUserPaginate.paginate2")}
           onPageChange={handlePageClick}
           pageRangeDisplayed={3}
           marginPagesDisplayed={2}
           pageCount={pageCount}
-          previousLabel="< Previous"
           pageClassName="page-item"
           pageLinkClassName="page-link"
           previousClassName="page-item"

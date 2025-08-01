@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./ManageUser.scss";
 import _ from "lodash";
+import { useTranslation } from "react-i18next";
 
 const ModalViewUser = (props) => {
   const { show, setShow, dataView } = props;
+  const { t } = useTranslation();
 
   const handleClose = () => {
     setEmail("");
@@ -42,12 +44,12 @@ const ModalViewUser = (props) => {
         className="modal-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>View a user</Modal.Title>
+          <Modal.Title>{t("modalViewUser.c")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Email</label>
+              <label className="form-label">{t("modalViewUser.label1")}</label>
               <input
                 type="email"
                 className="form-control"
@@ -56,7 +58,7 @@ const ModalViewUser = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Username</label>
+              <label className="form-label">{t("modalViewUser.label2")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -65,10 +67,10 @@ const ModalViewUser = (props) => {
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Role</label>
+              <label className="form-label">{t("modalViewUser.label3")}</label>
               <select className="form-select" value={role} disabled>
-                <option value="USER">User</option>
-                <option value="ADMIN">Admin</option>
+                <option value="USER">{t("modalViewUser.role1")}</option>
+                <option value="ADMIN">{t("modalViewUser.role2")}</option>
               </select>
             </div>
             <div className="col-md-12 img-preview">
@@ -76,7 +78,7 @@ const ModalViewUser = (props) => {
                 {previewImage ? (
                   <img alt="" src={previewImage} />
                 ) : (
-                  "Preview Image"
+                  t("modalViewUser.preview")
                 )}
               </span>
             </div>
@@ -84,7 +86,7 @@ const ModalViewUser = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("modalViewUser.btn1")}
           </Button>
         </Modal.Footer>
       </Modal>

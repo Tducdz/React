@@ -5,9 +5,11 @@ import { BsCloudUpload } from "react-icons/bs";
 import { toast } from "react-toastify";
 import _ from "lodash";
 import { putEditQuiz } from "../../../../services/apiService";
+import { useTranslation } from "react-i18next";
 
 const ModalEditQuiz = (props) => {
   const { show, setShow, dataEdit } = props;
+  const { t } = useTranslation();
 
   const handleClose = () => {
     setDescription("");
@@ -77,12 +79,12 @@ const ModalEditQuiz = (props) => {
         className="modal-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Edit a Quiz</Modal.Title>
+          <Modal.Title>{t("modalEditQuiz.title1")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Name</label>
+              <label className="form-label">{t("modalEditQuiz.label1")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -91,7 +93,7 @@ const ModalEditQuiz = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Description</label>
+              <label className="form-label">{t("modalEditQuiz.label2")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -100,20 +102,20 @@ const ModalEditQuiz = (props) => {
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Difficulty</label>
+              <label className="form-label">{t("modalEditQuiz.label3")}</label>
               <select
                 className="form-select"
                 value={difficulty}
                 onChange={(event) => setDifficulty(event.target.value)}
               >
-                <option value="EASY">Easy</option>
-                <option value="MEDIUM">Medium</option>
-                <option value="HARD">Hard</option>
+                <option value="EASY">{t("modalEditQuiz.option1")}</option>
+                <option value="MEDIUM">{t("modalEditQuiz.option2")}</option>
+                <option value="HARD">{t("modalEditQuiz.option3")}</option>
               </select>
             </div>
             <div className="col-md-12">
               <label className="form-label label-upload" htmlFor="upload-file">
-                <BsCloudUpload /> Upload File Image
+                <BsCloudUpload /> {t("modalEditQuiz.upload1")}
               </label>
               <input
                 id="upload-file"
@@ -127,7 +129,7 @@ const ModalEditQuiz = (props) => {
                 {previewImage ? (
                   <img alt="" src={previewImage} />
                 ) : (
-                  "Preview Image"
+                  t("modalEditQuiz.preview")
                 )}
               </span>
             </div>
@@ -135,7 +137,7 @@ const ModalEditQuiz = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("modalEditQuiz.btn1")}
           </Button>
           <Button
             variant="primary"
@@ -143,7 +145,7 @@ const ModalEditQuiz = (props) => {
               handleSubmitEditQuiz();
             }}
           >
-            Save
+            {t("modalEditQuiz.btn2")}
           </Button>
         </Modal.Footer>
       </Modal>

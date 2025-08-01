@@ -14,10 +14,14 @@ import sidebarBg from "../../assets/bg2.jpg";
 import { MdDashboard } from "react-icons/md";
 import { PiExamBold } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const SideBar = (props) => {
   const { collapsed, toggled, handleToggleSidebar } = props;
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
+
   return (
     <>
       <ProSidebar
@@ -53,7 +57,7 @@ const SideBar = (props) => {
               icon={<MdDashboard />}
               // suffix={<span className="badge red">New</span>}
             >
-              Dashboard
+              {t("sideBar.item1")}
               <Link to="/admins" />
             </MenuItem>
           </Menu>
@@ -61,20 +65,20 @@ const SideBar = (props) => {
             <SubMenu
               // suffix={<span className="badge yellow">3</span>}
               icon={<FaGem />}
-              title="Features"
+              title={t("sideBar.title1")}
             >
               <MenuItem>
-                User Management
+                {t("sideBar.item2")}
                 <Link to="manage-users" />
               </MenuItem>
               <MenuItem>
                 {" "}
-                Manage Quiz Questions
+                {t("sideBar.item3")}
                 <Link to="manage-quizzes" />
               </MenuItem>
               <MenuItem>
                 {" "}
-                Manage Questions
+                {t("sideBar.item4")}
                 <Link to="manage-questions" />
               </MenuItem>
             </SubMenu>

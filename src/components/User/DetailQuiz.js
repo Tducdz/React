@@ -6,6 +6,7 @@ import Question from "./Question";
 import _ from "lodash";
 import ModalResult from "./ModalResult";
 import RightContent from "./Content/RightContent";
+import { useTranslation } from "react-i18next";
 
 const DetailQuiz = () => {
   const param = useParams();
@@ -17,6 +18,8 @@ const DetailQuiz = () => {
 
   const [isShowModalResult, setIsShowModalResult] = useState(false);
   const [dataModalResult, setDataModalResult] = useState({});
+
+  const { t } = useTranslation();
 
   const fetchQuestions = async () => {
     let res = await getDataQuiz(quizId);
@@ -110,14 +113,10 @@ const DetailQuiz = () => {
     <div className="detail-quiz-container container">
       <div className="left-content">
         <div className="title">
-          {" "}
-          {`Quiz ${quizId}: `}
+          {`${t("detailQuiz.title")} ${quizId}: `}
           {location?.state?.quizDescription}
         </div>
         <hr />
-        {/* <div className="q-body">
-          <img />
-        </div> */}
         <div className="q-content">
           <Question
             index={index}
@@ -128,16 +127,16 @@ const DetailQuiz = () => {
 
         <div className="footer">
           <button className="btn btn-secondary" onClick={() => handlePrev()}>
-            Prev
+            {t("detailQuiz.btn1")}
           </button>
           <button className="btn btn-primary" onClick={() => handleNext()}>
-            Next
+            {t("detailQuiz.btn2")}
           </button>
           <button
             className="btn btn-warning"
             onClick={() => handleFinishQuiz()}
           >
-            Finish
+            {t("detailQuiz.btn3")}
           </button>
         </div>
       </div>

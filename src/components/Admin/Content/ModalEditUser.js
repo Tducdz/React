@@ -6,9 +6,11 @@ import { BsCloudUpload } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { putEditUser } from "../../../services/apiService";
 import _ from "lodash";
+import { useTranslation } from "react-i18next";
 
 const ModalEditUser = (props) => {
   const { show, setShow, dataEdit } = props;
+  const { t } = useTranslation();
 
   const handleClose = () => {
     setEmail("");
@@ -74,12 +76,12 @@ const ModalEditUser = (props) => {
         className="modal-user"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Edit a user</Modal.Title>
+          <Modal.Title>{t("modalEditUser.title1")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label className="form-label">Email</label>
+              <label className="form-label">{t("modalEditUser.label1")}</label>
               <input
                 type="email"
                 className="form-control"
@@ -89,7 +91,7 @@ const ModalEditUser = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Password</label>
+              <label className="form-label">{t("modalEditUser.label2")}</label>
               <input
                 type="password"
                 className="form-control"
@@ -99,7 +101,7 @@ const ModalEditUser = (props) => {
               />
             </div>
             <div className="col-md-6">
-              <label className="form-label">Username</label>
+              <label className="form-label">{t("modalEditUser.label3")}</label>
               <input
                 type="text"
                 className="form-control"
@@ -108,19 +110,19 @@ const ModalEditUser = (props) => {
               />
             </div>
             <div className="col-md-4">
-              <label className="form-label">Role</label>
+              <label className="form-label">{t("modalEditUser.label4")}</label>
               <select
                 className="form-select"
                 value={role}
                 onChange={(event) => setRole(event.target.value)}
               >
-                <option value="USER">User</option>
-                <option value="ADMIN">Admin</option>
+                <option value="USER">{t("modalEditUser.role1")}</option>
+                <option value="ADMIN">{t("modalEditUser.role2")}</option>
               </select>
             </div>
             <div className="col-md-12">
               <label className="form-label label-upload" htmlFor="upload-file">
-                <BsCloudUpload /> Upload File Image
+                <BsCloudUpload /> {t("modalEditUser.upload1")}
               </label>
               <input
                 id="upload-file"
@@ -134,7 +136,7 @@ const ModalEditUser = (props) => {
                 {previewImage ? (
                   <img alt="" src={previewImage} />
                 ) : (
-                  "Preview Image"
+                  t("modalEditUser.preview")
                 )}
               </span>
             </div>
@@ -142,7 +144,7 @@ const ModalEditUser = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            {t("modalEditUser.btn1")}
           </Button>
           <Button
             variant="primary"
@@ -150,7 +152,7 @@ const ModalEditUser = (props) => {
               handleSubmitEditUser();
             }}
           >
-            Save
+            {t("modalEditUser.btn2")}
           </Button>
         </Modal.Footer>
       </Modal>
